@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "223347036838",
+    "project_id": "iotca-2b9a5",
+    "storage_bucket": "iotca-2b9a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223347036838:android:753e7f787370e9bdc55a67",
+        "android_client_info": {
+          "package_name": "com.example.livingquality"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223347036838-om9517atbcleobr0n7oakj5mr20k8rtr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASfw2yRRvGdCMMCiVk7LzJFrQhG0cQD5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223347036838-om9517atbcleobr0n7oakj5mr20k8rtr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

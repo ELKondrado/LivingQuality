@@ -38,26 +38,25 @@ public class LiveActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live);
+        declareFields();
+        backButtonListener();
+        databaseListener();
+    }
 
-        backButton = findViewById(R.id.backButtonLive);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToHomeActivity();
-            }
-        });
-
+    public void declareFields(){
         progressBar1 = findViewById(R.id.progressBar1);
         progressBar2 = findViewById(R.id.progressBar2);
         progressBar3 = findViewById(R.id.progressBar3);
         progressBar4 = findViewById(R.id.progressBar4);
-
         humidityVal = findViewById(R.id.humidityVal);
         lightVal = findViewById(R.id.lightVal);
         airVal = findViewById(R.id.airVal);
         soundVal = findViewById(R.id.soundVal);
         scoreVal = findViewById(R.id.scoreVal);
+        backButton = findViewById(R.id.backButtonLive);
+    }
 
+    public void databaseListener(){
         reference = FirebaseDatabase.getInstance().getReference().child("LiveInformation");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -78,13 +77,22 @@ public class LiveActivity extends AppCompatActivity {
                 airVal.setText(air+"");
                 soundVal.setText(sound+"");
 
-                int score = (humidity + light + air + sound)*100/30;
+                int score = (humidity + light + air + sound)*100/40;
                 scoreVal.setText(score+"%");
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+    }
+
+    public void backButtonListener(){
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToHomeActivity();
             }
         });
     }

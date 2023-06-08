@@ -15,16 +15,26 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        declareFields();
+        historyListener();
+        liveListener();
+    }
 
+    public void declareFields(){
         buttonHistory = findViewById(R.id.qualityHistory);
+        buttonLive = findViewById(R.id.qualityLive);
+    }
+
+    public void historyListener(){
         buttonHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToHistoryActivity();
             }
         });
+    }
 
-        buttonLive = findViewById(R.id.qualityLive);
+    public void liveListener(){
         buttonLive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void goToHistoryActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, HistoryActivity.class);
         startActivity(intent);
     }
 

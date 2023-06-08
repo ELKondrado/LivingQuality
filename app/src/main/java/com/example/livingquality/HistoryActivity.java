@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class HistoryActivity extends AppCompatActivity {
     private TextView humidity;
     private TextView light;
     private TextView air;
@@ -36,12 +36,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        listHumidity = findViewById(R.id.humidityList);
-        listLight = findViewById(R.id.lightList);
-        listAir = findViewById(R.id.airList);
-        listSound = findViewById(R.id.soundList);
-        listNo = findViewById(R.id.noList);
+        declareFields();
+        backButtonListener();
 
         ArrayList<String> humidity = new ArrayList<>();
         ArrayList<String> light = new ArrayList<>();
@@ -71,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 sound.clear();
                 no.clear();
                 int i=1;
+
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Information info = snapshot.getValue(Information.class);
                     humidity.add(info.getHumidity()+"");
@@ -86,24 +83,33 @@ public class MainActivity extends AppCompatActivity {
                 adapterSound.notifyDataSetInvalidated();
                 adapterNo.notifyDataSetInvalidated();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+    }
 
+    public void declareFields(){
+        listHumidity = findViewById(R.id.humidityList);
+        listLight = findViewById(R.id.lightList);
+        listAir = findViewById(R.id.airList);
+        listSound = findViewById(R.id.soundList);
+        listNo = findViewById(R.id.noList);
         backButton = findViewById(R.id.backButton);
+    }
+
+    public void goToHomeActivity(){
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+    }
+
+    public void backButtonListener(){
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToHomeActivity();
             }
         });
-    }
-
-    public void goToHomeActivity(){
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
     }
 }

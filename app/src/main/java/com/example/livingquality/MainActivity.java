@@ -66,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 humidity.clear();
+                light.clear();
+                air.clear();
+                sound.clear();
+                no.clear();
                 int i=1;
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Information info = snapshot.getValue(Information.class);
